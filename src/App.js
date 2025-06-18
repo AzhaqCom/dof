@@ -332,7 +332,8 @@ const DofusObjectivesTracker = () => {
         const updatedObj = { ...obj, currentValue: value };
         // Recalcul automatique du pourcentage
         if (updatedObj.targetValue > 0) {
-          updatedObj.progress = Math.min((value / updatedObj.targetValue) * 100, 100);
+         updatedObj.progress = Math.round(Math.min((value / updatedObj.targetValue) * 100, 100) * 100) / 100;
+
         }
         return updatedObj;
       }
@@ -349,7 +350,8 @@ const DofusObjectivesTracker = () => {
           const updatedObj = { ...obj, targetValue: value };
           // Recalcul automatique du pourcentage
           if (updatedObj.currentValue !== undefined) {
-            updatedObj.progress = Math.min((updatedObj.currentValue / value) * 100, 100);
+           updatedObj.progress = Math.round(Math.min((updatedObj.currentValue / value) * 100, 100) * 100) / 100;
+
           }
           return updatedObj;
         }
