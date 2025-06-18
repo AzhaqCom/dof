@@ -408,12 +408,12 @@ const DofusObjectivesTracker = () => {
 
   // Modification de l'affichage des ressources avec champs éditables
   const ResourceItem = ({ objective, resource }) => (
-    <div key={resource.id} className="flex items-center justify-between bg-blue-50 p-3 rounded-lg">
+    <div key={resource.id} className="flex flex-wrap items-center justify-between bg-blue-50 p-3 rounded-lg">
       <div className="flex items-center gap-3 flex-1">
         <Package className="w-4 h-4 text-blue-600" />
         <span className="text-gray-700">{resource.name}</span>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3">
         <input
           type="number"
           defaultValue={resource.current}
@@ -474,7 +474,7 @@ const DofusObjectivesTracker = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
           <div className="p-6 border-b border-gray-200">
@@ -487,7 +487,7 @@ const DofusObjectivesTracker = () => {
                 <p className="text-gray-600 mt-2">Suivez vos objectifs et ressources pour votre équipe de 8 personnages</p>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <div className="text-right">
                   <div className="flex items-center gap-2 mb-2">
                     {isOnline ? (
@@ -506,7 +506,7 @@ const DofusObjectivesTracker = () => {
                     </p>
                   )}
 
-                  <div className="flex items-center gap-2 mt-1">
+                  <div className="flex  items-center gap-2 mt-1">
                     <input
                       type="checkbox"
                       id="autosave"
@@ -520,7 +520,7 @@ const DofusObjectivesTracker = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <button
                     onClick={manualSave}
                     disabled={loading}
@@ -553,7 +553,7 @@ const DofusObjectivesTracker = () => {
             </div>
           </div>
 
-          <div className="p-6">
+          <div className="p-4">
             <button
               onClick={() => setShowAddForm(!showAddForm)}
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mb-6"
@@ -591,7 +591,7 @@ const DofusObjectivesTracker = () => {
                     <option value="medium">Priorité moyenne</option>
                     <option value="low">Priorité basse</option>
                   </select>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <input
                       type="number"
                       placeholder="Valeur actuelle"
@@ -632,8 +632,8 @@ const DofusObjectivesTracker = () => {
               {objectives.map(objective => (
                 <div key={objective.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden">
                   <div className="p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3 flex-1">
+                    <div className="flex flex-wrap gap-2 items-center justify-between">
+                      <div className="flex flex-wrap items-center gap-3 flex-1">
                         <button
                           onClick={() => toggleObjective(objective.id)}
                           className="text-gray-500 hover:text-gray-700"
@@ -648,7 +648,7 @@ const DofusObjectivesTracker = () => {
                           </span>
                         </div>
 
-                        <div className="flex-1">
+                        <div className="flex-1 ">
                           <h3 className={`font-semibold ${objective.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
                             {objective.title}
                           </h3>
@@ -672,9 +672,7 @@ const DofusObjectivesTracker = () => {
                                 title="Valeur cible"
                               />
                             </div>
-                            <div className="text-sm text-gray-500">
-                              {Math.round(((objective.currentValue || 0) / (objective.targetValue || 100)) * 100)}%
-                            </div>
+                          
                           </div>
                         </div>
                       </div>
@@ -710,7 +708,7 @@ const DofusObjectivesTracker = () => {
                     </div>
 
                     {objective.expanded && (
-                      <div className="mt-4 pl-8 space-y-4">
+                      <div className="mt-4 pl-4 space-y-4">
                         {/* Sous-objectifs */}
                         <div>
                           <h4 className="font-medium text-gray-700 mb-2">Sous-objectifs</h4>
